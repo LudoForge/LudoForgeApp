@@ -1,5 +1,18 @@
-<div class="container text-center mt-5">
-  <h1 class="display-4">Ciao dal mio sito Angular!</h1>
-  <p class="lead">Creato con Angular + Bootstrap + Git</p>
-  <button class="btn btn-primary">Cliccami</button>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">DungeonApp</a>
+    <div>
+      <a routerLink="" class="nav-link d-inline px-2 text-light">Home</a>
+      <a routerLink="/chi-siamo" class="nav-link d-inline px-2 text-light">Chi Siamo</a>
+      <a routerLink="/contatti" class="nav-link d-inline px-2 text-light">Contatti</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <router-outlet></router-outlet>
 </div>
+
+<footer class="bg-dark text-light text-center p-3 mt-5">
+  &copy; 2025 DungeonApp
+</footer>

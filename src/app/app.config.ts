@@ -2,12 +2,13 @@ import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } fr
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter([]), // ← metti qui le tue route
+    provideRouter(routes),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideClientHydration(withEventReplay()),
-    importProvidersFrom(NgbModule) // ← ✅ AGGIUNTO QUI
+    importProvidersFrom(NgbModule) 
   ]
 };
