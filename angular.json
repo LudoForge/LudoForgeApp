@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "dungeoncrawlerapp": {
+    "LudoForgeApp": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/dungeoncrawlerapp",
+            "outputPath": "dist/LudoForgeApp",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -83,7 +83,7 @@
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
-              "baseHref": "/dungeoncrawlerapp/"
+              "baseHref": "/LudoForgeApp/"
             },
             "development": {
               "optimization": false,
@@ -97,10 +97,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "dungeoncrawlerapp:build:production"
+              "buildTarget": "LudoForgeApp:build:production"
             },
             "development": {
-              "buildTarget": "dungeoncrawlerapp:build:development"
+              "buildTarget": "LudoForgeApp:build:development"
             }
           },
           "defaultConfiguration": "development"
