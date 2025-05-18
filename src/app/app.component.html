@@ -17,6 +17,18 @@
   <router-outlet></router-outlet>
 </div>
 
-<footer class="bg-dark text-light text-center p-3 mt-5">
+<footer class="position-fixed bottom-0 start-0 w-100 bg-dark text-light text-center p-3 mt-5">
   &copy; 2025 LudoForgeApp
 </footer>
+
+<!-- Overlay Coookie consent per bloccare il sito -->
+<div *ngIf="showCookieBanner" class="cookie-overlay position-fixed bottom-0 w-100 h-100 top-0 start-0 bg-dark bg-opacity-75 d-flex justify-content-center align-items-center" style="z-index: 1050;">
+  <div class="cookie-banner bg-white p-4 rounded shadow text-center" style="max-width: 500px;">
+    <h5>Questo sito utilizza i cookie</h5>
+    <p>Utilizziamo i cookie per migliorare la tua esperienza. Vuoi accettarli?</p>
+    <div class="d-flex justify-content-around mt-3">
+      <button class="btn btn-success" (click)="accettaCookie()">Accetta</button>
+      <button class="btn btn-danger" (click)="accettaCookie()">Rifiuta</button>
+    </div>
+  </div>
+</div>
