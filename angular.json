@@ -29,7 +29,8 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/assets"
             ],
             "styles": [
               "src/styles.scss",
@@ -127,7 +128,8 @@
                   "glob": "**/*",
                   "input": "src/assets",
                   "output": "assets"
-                }
+                },
+              "src/assets"
             ],
             "styles": [
               "src/styles.scss",

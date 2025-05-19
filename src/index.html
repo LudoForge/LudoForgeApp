@@ -17,5 +17,29 @@
   </head>
   <body>
     <app-root></app-root>
+
+    <script src="https://www.paypal.com/sdk/js?client-id=TUO_CLIENT_ID&currency=EUR"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        if (window.paypal) {
+          paypal.Buttons({
+            createOrder: function (data, actions) {
+              return actions.order.create({
+                purchase_units: [{
+                  amount: {
+                    value: '29.90' // Prezzo del prodotto
+                  }
+                }]
+              });
+            },
+            onApprove: function (data, actions) {
+              return actions.order.capture().then(function (details) {
+                alert('Grazie ' + details.payer.name.given_name + '! Il tuo ordine è stato ricevuto.');
+              });
+            }
+          }).render('#paypal-button-container');
+        }
+      });
+    </script>
   </body>
 </html>

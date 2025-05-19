@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { isPlatformBrowser } from '@angular/common';
@@ -11,26 +11,23 @@ import { PLATFORM_ID } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'LudoForgeApp';
-
-  showCookieBanner = true;
+  showCookieBanner = false;
   private platformId = inject(PLATFORM_ID);
 
-  constructor() {
+  ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       const accepted = localStorage.getItem('cookiesAccepted');
-      this.showCookieBanner = accepted !== 'true' && accepted !== 'false'; // mostra solo se non ha ancora scelto
+      this.showCookieBanner = accepted !== 'true' && accepted !== 'false';
     }
   }
 
-  //al momento va bene ma in futuro accettane di più
   accettaCookie() {
     this.showCookieBanner = false;
     if (isPlatformBrowser(this.platformId)) {
       localStorage.setItem('cookiesAccepted', 'true');
     }
-    // qui potresti inizializzare Google Analytics, etc.
   }
 
   rejectCookies() {
@@ -38,6 +35,5 @@ export class AppComponent {
     if (isPlatformBrowser(this.platformId)) {
       localStorage.setItem('cookiesAccepted', 'false');
     }
-    // non attivare strumenti di tracciamento
   }
 }
