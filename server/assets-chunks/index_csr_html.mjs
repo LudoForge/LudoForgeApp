@@ -1,9 +1,9 @@
-<!doctype html>
+export default `<!doctype html>
 <html lang="en" data-beasties-container="">
 <head>
   <meta charset="utf-8">
   <title>LudoForge</title>
-  <base href="/LudoForgeApp/">
+  <base href="https://ludoforge.github.io/LudoForgeApp/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="images/logo.jpg">
     <!-- Codice di Google AdSense -->
@@ -42,4 +42,4 @@
       });
     </script>
   <script src="polyfills-FFHMD2TL.js" type="module"></script><script src="main-NMBBT3AE.js" type="module"></script></body>
-</html>
+</html>`;
