@@ -1,19 +1,21 @@
 import { Component, OnInit, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { ContattiComponent } from '../contatti/contatti.component';
+import { RouterModule } from '@angular/router';
 
-declare const paypal: any; // ✅ dichiarazione globale fuori dalla classe
+declare const paypal: any;
 
 @Component({
   standalone: true,
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  imports: [] // aggiungi qui i moduli se ne usi (es: CommonModule, RouterModule ecc.)
+  imports: [RouterModule] 
 })
 export class HomeComponent implements OnInit, AfterViewInit {
 
   visitCount: number = 0;
-  buyerCount: number = 124; // statico
+  buyerCount: number = 124;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 

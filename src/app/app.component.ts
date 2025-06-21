@@ -3,16 +3,17 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
+import { ContattiComponent } from '../pages/contatti/contatti.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, ContattiComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'LudoForgeApp';
+  title = 'LudoForge';
   showCookieBanner = false;
   private platformId = inject(PLATFORM_ID);
 
