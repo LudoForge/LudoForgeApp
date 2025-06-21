@@ -1,6 +1,6 @@
 
 export default {
-  basePath: 'https://ludoforge.github.io/LudoForgeApp',
+  basePath: 'https://LudoForge.github.io/LudoForgeApp',
   supportedLocales: {
   "en-US": ""
 },

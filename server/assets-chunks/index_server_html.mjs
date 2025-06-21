@@ -3,7 +3,7 @@ export default `<!doctype html>
 <head>
   <meta charset="utf-8">
   <title>LudoForge</title>
-  <base href="https://ludoforge.github.io/LudoForgeApp/">
+  <base href="https://LudoForge.github.io/LudoForgeApp/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="images/logo.jpg">
     <!-- Codice di Google AdSense -->
