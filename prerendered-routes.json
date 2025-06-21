@@ -1,0 +1,9 @@
+{
+  "routes": {
+    "/LudoForgeApp": {},
+    "/LudoForgeApp/chi-siamo": {},
+    "/LudoForgeApp/dungeoncrawler": {},
+    "/LudoForgeApp/recensioni": {},
+    "/LudoForgeApp/scrivi-un-messaggio": {}
+  }
+}

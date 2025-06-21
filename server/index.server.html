@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>LudoForge</title>
+  <base href="https://ludoforge.github.io/LudoForgeApp/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="images/logo.jpg">
+    <!-- Codice di Google AdSense -->
+    <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-XXXXXXX", // Il tuo ID
+        enable_page_level_ads: true
+      });
+    </script>
+  <link rel="stylesheet" href="styles-EFPPUCV3.css"></head>
+  <body><script type="text/javascript" id="ng-event-dispatch-contract">(()=>{function p(t,n,r,o,e,i,f,m){return{eventType:t,event:n,targetElement:r,eic:o,timeStamp:e,eia:i,eirp:f,eiack:m}}function u(t){let n=[],r=e=>{n.push(e)};return{c:t,q:n,et:[],etc:[],d:r,h:e=>{r(p(e.type,e,e.target,t,Date.now()))}}}function s(t,n,r){for(let o=0;o<n.length;o++){let e=n[o];(r?t.etc:t.et).push(e),t.c.addEventListener(e,t.h,r)}}function c(t,n,r,o,e=window){let i=u(t);e._ejsas||(e._ejsas={}),e._ejsas[n]=i,s(i,r),s(i,o,!0)}window.__jsaction_bootstrap=c;})();
+</script>
+    <app-root></app-root>
+
+    <script src="https://www.paypal.com/sdk/js?client-id=TUO_CLIENT_ID&amp;currency=EUR"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        if (window.paypal) {
+          paypal.Buttons({
+            createOrder: function (data, actions) {
+              return actions.order.create({
+                purchase_units: [{
+                  amount: {
+                    value: '29.90' // Prezzo del prodotto
+                  }
+                }]
+              });
+            },
+            onApprove: function (data, actions) {
+              return actions.order.capture().then(function (details) {
+                alert('Grazie ' + details.payer.name.given_name + '! Il tuo ordine è stato ricevuto.');
+              });
+            }
+          }).render('#paypal-button-container');
+        }
+      });
+    </script>
+  <script src="polyfills-FFHMD2TL.js" type="module"></script><script src="main-NMBBT3AE.js" type="module"></script></body>
+</html>
