@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="images/logo.jpg" alt="Logo" width="30" height="30" class="me-2">
+      LudoForge
+    </a>
+    <div>
+      <a routerLink="" class="nav-link d-inline px-2 text-light">Home</a>
+      <a routerLink="/chi-siamo" class="nav-link d-inline px-2 text-light">Chi Siamo</a>
+      <a routerLink="/scrivi-un-messaggio" class="nav-link d-inline px-2 text-light">Contatti</a>
+      <a routerLink="/recensioni" class="nav-link d-inline px-2 text-light">Recensioni</a>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container mt-4">
+  <router-outlet></router-outlet>
+</div>
+
+<footer class="position-fixed bottom-0 start-0 w-100 bg-dark text-light text-center p-3 mt-5">
+    <app-contatti></app-contatti>
+</footer>
+
+<!-- Overlay Coookie consent per bloccare il sito -->
+<div *ngIf="showCookieBanner" class="cookie-overlay position-fixed bottom-0 w-100 h-100 top-0 start-0 bg-dark bg-opacity-75 d-flex justify-content-center align-items-center" style="z-index: 1050;">
+  <div class="cookie-banner bg-white p-4 rounded shadow text-center" style="max-width: 500px;">
+    <h5>Questo sito utilizza i cookie</h5>
+    <p>Utilizziamo i cookie per migliorare la tua esperienza. Vuoi accettarli?</p>
+    <div class="d-flex justify-content-around mt-3">
+      <button class="btn btn-success" (click)="accettaCookie()">Accetta</button>
+      <button class="btn btn-danger" (click)="accettaCookie()">Rifiuta</button>
+    </div>
+  </div>
+</div>

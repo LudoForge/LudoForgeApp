@@ -1,0 +1,35 @@
+<div class="container my-5">
+    <h2 class="mb-4 text-center">Contattaci</h2>
+  
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <h5>📧 Email</h5>
+        <p><a href="mailto:info&#64;tuaazienda.it">info&#64;tuaazienda.it</a></p>
+        <h5>📞 Telefono</h5>
+        <p><a href="tel:+390123456789">+39 012 345 6789</a></p>
+      </div>
+  
+      <div class="col-md-6">
+        <form (submit)="onSubmit($event); $event.preventDefault();">
+          <div class="mb-3">
+            <label for="user_email" class="form-label">La tua email</label>
+            <input type="email" class="form-control" id="user_email" name="user_email" required>
+          </div>
+  
+          <div class="mb-3">
+            <label for="message" class="form-label">Messaggio</label>
+            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+          </div>
+  
+          <button type="submit" class="btn btn-primary">Invia messaggio</button>
+  
+          <div *ngIf="messageSent" class="alert alert-success mt-3">
+            Messaggio inviato con successo!
+          </div>
+          <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+            {{ errorMessage }}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

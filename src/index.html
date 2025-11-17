@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>LudoForge</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="images/logo.jpg">
+    <!-- Codice di Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-XXXXXXX", // Il tuo ID
+        enable_page_level_ads: true
+      });
+    </script>
+  </head>
+  <body>
+    <app-root></app-root>
+
+    <script src="https://www.paypal.com/sdk/js?client-id=TUO_CLIENT_ID&currency=EUR"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        if (window.paypal) {
+          paypal.Buttons({
+            createOrder: function (data, actions) {
+              return actions.order.create({
+                purchase_units: [{
+                  amount: {
+                    value: '29.90' // Prezzo del prodotto
+                  }
+                }]
+              });
+            },
+            onApprove: function (data, actions) {
+              return actions.order.capture().then(function (details) {
+                alert('Grazie ' + details.payer.name.given_name + '! Il tuo ordine è stato ricevuto.');
+              });
+            }
+          }).render('#paypal-button-container');
+        }
+      });
+    </script>
+  </body>
+</html>
