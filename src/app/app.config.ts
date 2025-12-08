@@ -3,12 +3,16 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import { provideRouter } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { routes } from './app.routes';
+import { provideHttpClient } from '@angular/common/http';
+import { tap } from 'rxjs/operators';  // ✅ mancava
+import { Observable } from 'rxjs';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideClientHydration(withEventReplay()),
-    importProvidersFrom(NgbModule) 
+    importProvidersFrom(NgbModule),
+    provideHttpClient()
   ]
 };

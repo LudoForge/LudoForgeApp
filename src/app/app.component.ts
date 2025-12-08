@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
-import { ContattiComponent } from '../pages/contatti/contatti.component';
+import { ContattiComponent } from './pages/contatti/contatti.component';
 
 @Component({
   selector: 'app-root',
