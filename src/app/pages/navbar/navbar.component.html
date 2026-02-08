@@ -1,0 +1,44 @@
+<div class="container d-flex justify-content-end p-3">
+
+  @if (isLoggedIn) {
+    <div class="dropdown">
+      
+      <button 
+        class="btn btn-light dropdown-toggle d-flex align-items-center gap-2 border shadow-sm" 
+        type="button" 
+        (click)="toggleDropdown()">
+        
+        <img 
+          src="https://ui-avatars.com/api/?name=User+Name&background=random" 
+          alt="Avatar" 
+          class="rounded-circle" 
+          width="32" height="32">
+        
+        <span class="d-none d-sm-block fw-medium">Il Mio Profilo</span>
+      </button>
+
+      <ul class="dropdown-menu dropdown-menu-end" [class.show]="isOpen">
+        
+        <li>
+          <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+            <i class="bi bi-gear"></i> Settings
+          </a>
+        </li>
+
+        <li><hr class="dropdown-divider"></li>
+
+        <li>
+          <button class="dropdown-item text-danger d-flex align-items-center gap-2" (click)="logout()">
+            <i class="bi bi-box-arrow-right"></i>
+            Logout
+          </button>
+        </li>
+
+      </ul>
+    </div>
+
+  } @else {
+    <button class="btn btn-primary" (click)="isLoggedIn = true">Login (Simulato)</button>
+  }
+
+</div>

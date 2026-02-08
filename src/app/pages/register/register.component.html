@@ -1,1 +1,40 @@
-<p>register works!</p>
+<h1>TEST LOGIN</h1> ```
+Se non vedi nemmeno la scritta "TEST LOGIN", il problema è al 100% nel **Router** o nel **RouterOutlet** che non è presente nell'`app.component.html`.
+
+
+<div class="row justify-content-center">
+  <div class="col-md-4">
+    <div class="card shadow border-0">
+      <div class="card-body p-4">
+        <h2 class="text-center mb-4 fw-bold text-primary">Crea Account</h2>
+        <p class="text-center text-muted mb-4">Unisciti alla community di LudoForge</p>
+        
+        <form (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label class="form-label">Indirizzo Email</label>
+            <input type="email" name="email" [(ngModel)]="registerData.email" 
+                   class="form-control" placeholder="nome@esempio.it" required>
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" name="password" [(ngModel)]="registerData.password" 
+                   class="form-control" placeholder="Scegli una password sicura" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Conferma Password</label>
+            <input type="password" name="confirmPassword" [(ngModel)]="registerData.confirmPassword" 
+                   class="form-control" placeholder="Ripeti la password" required>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100 py-2">Registrati</button>
+        </form>
+
+        <div class="text-center mt-3">
+            <small>Hai già un account? <a routerLink="/login" class="text-decoration-none">Accedi</a></small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

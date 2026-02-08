@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, Inject, PLATFORM_ID } from '@angular/
 import { isPlatformBrowser } from '@angular/common';
 import { ContattiComponent } from '../contatti/contatti.component';
 import { RouterModule } from '@angular/router';
+import {RouterLink } from '@angular/router';
 
 declare const paypal: any;
 
@@ -10,7 +11,7 @@ declare const paypal: any;
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  imports: [RouterModule] 
+  imports: [RouterModule, RouterLink] 
 })
 export class HomeComponent implements OnInit, AfterViewInit {
 

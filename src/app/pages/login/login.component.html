@@ -1,1 +1,27 @@
-<p>login works!</p>
+<div class="row justify-content-center">
+  <div class="col-md-4">
+    <div class="card shadow border-0">
+      <div class="card-body p-4">
+        <h2 class="text-center mb-4 fw-bold">Bentornato!</h2>
+        
+        <form (ngSubmit)="onLogin()">
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" placeholder="Inserisci la tua mail" name="email" [(ngModel)]="loginData.email" required>
+          </div>
+          
+          <div class="mb-4">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" placeholder="Inserisci la tua password" name="password" [(ngModel)]="loginData.password">
+          </div>
+
+          <button type="submit" class="btn btn-dark w-100 py-2">Accedi</button>
+        </form>
+
+        <div class="text-center mt-3">
+            <small>Nuovo su LudoForge? <a routerLink="/register" class="text-decoration-none text-primary">Registrati ora</a></small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
