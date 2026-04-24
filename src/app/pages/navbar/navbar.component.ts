@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Serve per ngClass se lo usi
-import { RouterModule } from '@angular/router'; // Per i link
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -11,24 +11,16 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  authService = inject(AuthService); // Iniettiamo il servizio
+  authService = inject(AuthService); // Servizio con il Signal isLoggedIn
   
-  // Stato per aprire/chiudere la tendina
-  isDropdownOpen = false;
-
-  isLoggedIn = true; 
-  
-  // Gestisce l'apertura della tendina
-  isOpen = false;
+  isOpen = false; // Stato per la classe .show del dropdown
 
   toggleDropdown() {
-    this.isDropdownOpen = !this.isDropdownOpen;
+    this.isOpen = !this.isOpen;
   }
 
   logout() {
     this.authService.logout();
-    this.isDropdownOpen = false;
-    console.log("Utente disconnesso");
-    // Qui potresti reindirizzare alla home con router.navigate(['/'])
+    this.isOpen = false;
   }
 }

@@ -1,43 +1,53 @@
-import { Injectable, signal } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';  // ✅ mancava
+import { Injectable, signal, inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private accessKey = "ACCESS_TOKEN";
-  private refreshKey = "REFRESH_TOKEN";
+  private router = inject(Router);
+  private platformId = inject(PLATFORM_ID);
 
-  constructor(private http: HttpClient) {}  // ✅ mancava il costruttore
+  // Signal per lo stato: la Navbar reagirà istantaneamente a questo
+  isLoggedIn = signal<boolean>(false);
 
-  private readonly AUTH_URL = `http://localhost:8080/api/auth`;
-  
-  login(email: string, password: string) {
-    return this.http.post(`${this.AUTH_URL}/login`, { email, password }).pipe(
-      tap((res: any) => {
-        localStorage.setItem("ACCESS_TOKEN", res.accessToken);
-        localStorage.setItem("REFRESH_TOKEN", res.refreshToken);
-      })
-    );
+  constructor() {
+    // Controlla il localStorage SOLO quando siamo nel browser (idratazione)
+    if (isPlatformBrowser(this.platformId)) {
+      const token = localStorage.getItem('ACCESS_TOKEN');
+      if (token) {
+        this.isLoggedIn.set(true);
+      }
+    }
   }
 
-  register(userData: any) {
-    return this.http.post(`${this.AUTH_URL}/register`, userData);
+  private checkInitialAuth(): boolean {
+    // Evita l'errore "localStorage is not defined" durante l'SSR
+    if (isPlatformBrowser(this.platformId)) {
+      return !!localStorage.getItem('ACCESS_TOKEN');
+    }
+    return false;
   }
 
-  // Nel tuo AuthService.ts modifica questo metodo:
-  refreshAccessToken() {
-    const token = localStorage.getItem(this.refreshKey);
-  // Usa l'URL dinamico come negli altri metodi
-    return this.http.post(`${this.AUTH_URL}/refresh`, { refreshToken: token }).pipe(
-      tap((res: any) => localStorage.setItem(this.accessKey, res.accessToken))
-  );
+  loginSuccess(token: string) {
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('ACCESS_TOKEN', token);
+      this.isLoggedIn.set(true); // Trigger reattivo per la Navbar
+    }
   }
-
-  isLoggedIn = signal<boolean>(true); // Metti 'false' per testare quando non è loggato
 
   logout() {
-    this.isLoggedIn.set(false);
-    // Qui aggiungerai la logica per pulire il token o chiamare il backend
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem('ACCESS_TOKEN');
+      this.isLoggedIn.set(false);
+      this.router.navigate(['/login']);
+    }
+  }
+
+  private hasToken(): boolean {
+    // Controlla se siamo nel browser prima di toccare localStorage
+    if (typeof window !== 'undefined') {
+      return !!localStorage.getItem('ACCESS_TOKEN');
+    }
+    return false;
   }
 }
-

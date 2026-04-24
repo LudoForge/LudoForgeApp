@@ -1,0 +1,46 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+          <h4 class="mb-0"><i class="bi bi-gear-fill me-2"></i>Impostazioni Account</h4>
+        </div>
+        <div class="card-body">
+          
+          <h5 class="card-title mb-4">Sicurezza: Cambio Password</h5>
+          
+          <form [formGroup]="passwordForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label class="form-label">Vecchia Password</label>
+              <input type="password" class="form-control" formControlName="oldPassword">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Nuova Password</label>
+              <input type="password" class="form-control" formControlName="newPassword">
+              <small class="text-muted">Minimo 8 caratteri</small>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Conferma Nuova Password</label>
+              <input type="password" class="form-control" formControlName="confirmPassword">
+              @if (passwordForm.errors?.['mismatch'] && passwordForm.get('confirmPassword')?.touched) {
+                <div class="text-danger small">Le password non coincidono</div>
+              }
+            </div>
+
+            <button type="submit" [disabled]="passwordForm.invalid" class="btn btn-primary w-100">
+              Aggiorna Password
+            </button>
+          </form>
+
+          @if (message) {
+            <div class="alert mt-3" [ngClass]="isError ? 'alert-danger' : 'alert-success'">
+              {{ message }}
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

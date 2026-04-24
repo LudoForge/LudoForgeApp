@@ -1,8 +1,9 @@
 import { Component, OnInit, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ContattiComponent } from '../contatti/contatti.component';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import {RouterLink } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 declare const paypal: any;
 
@@ -18,7 +19,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
   visitCount: number = 0;
   buyerCount: number = 124;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  prodotto = {
+    id: 'ludo-001',
+    nome: 'Manuale LudoForge',
+    prezzo: 29.99
+  };
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, private router: Router, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
@@ -47,7 +54,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
             },
             onApprove: (data: any, actions: any) => {
               return actions.order.capture().then((details: any) => {
-                alert('Grazie ' + details.payer.name.given_name + '! Il tuo ordine è stato completato.');
+                this.toastr.success('Grazie ' + details.payer.name.given_name + '! Il tuo ordine è stato completato.', 'Successo');
               });
             }
           }).render('#paypal-button-container');
@@ -55,6 +62,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
         }
       }, 300);
     }
+  }
+
+  vaiAlCheckout() {
+    // Navighiamo alla pagina acquista passando i dati nello stato della rotta
+    this.router.navigate(['/acquista'], { 
+      state: { data: this.prodotto } 
+    });
   }
 
 }

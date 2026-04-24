@@ -8,6 +8,10 @@ import { ScriviUnMessaggioComponentComponent } from './pages/scrivi-un-messaggio
 import { DungeoncrawlerComponent } from './pages/dungeoncrawler/dungeoncrawler.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
+import { ConfirmAccountComponent } from './pages/confirm-account/confirm-account.component';
+import { AcquistaComponent } from './pages/acquista/acquista.component';
+import { ListaOrdiniComponent } from './pages/lista-ordini/lista-ordini.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -16,5 +20,9 @@ export const routes: Routes = [
   { path: 'recensioni', component: RecensioniComponent },
   { path: 'dungeoncrawler', component: DungeoncrawlerComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: 'confirm-account', component: ConfirmAccountComponent },
+  { path: 'acquista', component: AcquistaComponent },
+  { path: 'ordini', component: ListaOrdiniComponent},
+  { path: 'impostazioni', component: SettingsComponent }
 ];

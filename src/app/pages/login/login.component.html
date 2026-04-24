@@ -15,6 +15,10 @@
             <input type="password" class="form-control" placeholder="Inserisci la tua password" name="password" [(ngModel)]="loginData.password">
           </div>
 
+          <div class="text-end mb-4">
+            <a href="javascript:void(0)" (click)="sendEmail()" class="text-decoration-none small text-muted">Password dimenticata?</a>
+          </div>
+
           <button type="submit" class="btn btn-dark w-100 py-2">Accedi</button>
         </form>
 

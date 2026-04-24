@@ -1,0 +1,31 @@
+<div class="container mt-4">
+  <h2>I Miei Ordini</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID Ordine</th>
+        <th>Prodotto</th>
+        <th>Totale</th>
+        <th>Stato</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (ordine of ordini; track ordine.id) {
+        <tr>
+          <td>#{{ ordine.id }}</td>
+          <td>{{ ordine.productCode }}</td>
+          <td>{{ ordine.amount }}€</td>
+          <td>
+            <span [class]="ordine.status === 'COMPLETED' ? 'text-success' : 'text-warning'">
+              {{ ordine.status }}
+            </span>
+          </td>
+          <td>{{ ordine.date | date:'dd/MM/yyyy' }}</td>
+        </tr>
+      } @empty {
+        <tr><td colspan="5">Non hai ancora effettuato ordini.</td></tr>
+      }
+    </tbody>
+  </table>
+</div>

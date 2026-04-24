@@ -1,0 +1,29 @@
+<div class="checkout-container">
+  <h2>Concludi l'ordine</h2>
+  
+  <div class="order-summary card">
+    <h3>Riepilogo Prodotto</h3>
+    @if (prodottoScelto) {
+      <div class="item-detail">
+        <span><strong>{{ prodottoScelto.nome }}</strong></span>
+        <span>Prezzo: {{ prodottoScelto.prezzo }}€</span>
+      </div>
+      <hr>
+      <div class="total">
+        <strong>Totale da pagare: {{ prodottoScelto.prezzo }}€</strong>
+      </div>
+    } @else {
+      <p>Nessun prodotto selezionato.</p>
+    }
+  </div>
+
+  <div class="payment-methods card">
+    <h3>Scegli il metodo di pagamento</h3>
+    
+    <div id="paypal-button-container"></div>
+    
+    <button class="btn btn-secondary" (click)="pagaConBonifico()">
+      Paga con Bonifico Bancario
+    </button>
+  </div>
+</div>

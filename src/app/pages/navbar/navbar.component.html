@@ -1,6 +1,6 @@
-<div class="container d-flex justify-content-end p-3">
+<div class="container d-flex justify-content-end align-items-center p-3 gap-2">
 
-  @if (isLoggedIn) {
+  @if (authService.isLoggedIn()) {
     <div class="dropdown">
       
       <button 
@@ -20,7 +20,7 @@
       <ul class="dropdown-menu dropdown-menu-end" [class.show]="isOpen">
         
         <li>
-          <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+          <a class="dropdown-item d-flex align-items-center gap-2" routerLink="/impostazioni">
             <i class="bi bi-gear"></i> Settings
           </a>
         </li>
@@ -33,12 +33,16 @@
             Logout
           </button>
         </li>
-
       </ul>
     </div>
 
   } @else {
-    <button class="btn btn-primary" (click)="isLoggedIn = true">Login (Simulato)</button>
+    <button class="btn btn-outline-dark" routerLink="/login">
+      <i class="bi bi-box-arrow-in-right"></i> Login
+    </button>
+    <button class="btn btn-primary" routerLink="/register">
+      Registrati
+    </button>
   }
 
 </div>

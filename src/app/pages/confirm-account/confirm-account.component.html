@@ -1,0 +1,9 @@
+<div style="text-align: center; margin-top: 100px;">
+  <h2>{{ statusMessage }}</h2>
+
+  @if (loading) {
+    <p>Attivazione in corso, attendi...</p>
+  } @else {
+    <button (click)="goToLogin()">Vai al Login</button>
+  }
+</div>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>LudoForge - Reindirizzamento</title>
+  <script>
+    // Cattura il percorso originale
+    const path = window.location.pathname;
+    const segment = path.split('/').filter(p => p);
+    const basePath = '/LudoForgeApp/';
+    
+    // Se il percorso non è la root, salva il percorso e ridirige a index.html
+    if (segment.length > 1 || (segment.length === 1 && segment[0] !== 'LudoForgeApp')) {
+      // Salva il percorso originale per Angular Router
+      sessionStorage.setItem('redirectUrl', path);
+      window.location.href = basePath;
+    }
+  </script>
+</head>
+<body>
+  <p>Reindirizzamento in corso...</p>
+</body>
+</html>
